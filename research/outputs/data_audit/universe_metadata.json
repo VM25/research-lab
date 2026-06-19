@@ -1,0 +1,168 @@
+{
+  "requested_start": "2006-01-01",
+  "requested_end": "2026-06-19",
+  "actual_start": "2006-01-03",
+  "actual_end": "2026-06-18",
+  "trading_days": 5147,
+  "trading_days_per_year": 252,
+  "calendar_reference": "SPY",
+  "return_basis": "dividend- and split-adjusted close (used as a total-return approximation)",
+  "price_source": "yahoo",
+  "cash_asset": "CASH",
+  "cash_proxy_etf": "BIL",
+  "cash_handling": "Cash / T-bill exposure (the cash fallback and the cash benchmark) earns the 13-week US Treasury-bill yield from Yahoo (^IRX), applied continuously across the full sample. BIL and SHV are included as tradable ETFs, but the continuous T-bill rate is used for cash so there is no 2007 inception gap.",
+  "assets": [
+    {
+      "ticker": "SPY",
+      "name": "S&P 500",
+      "group": "us_equity",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Nasdaq 100",
+      "group": "us_equity",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "IWM",
+      "name": "US Small Cap",
+      "group": "us_equity",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "EFA",
+      "name": "Developed ex-US Equity",
+      "group": "intl_equity",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "EEM",
+      "name": "Emerging Markets Equity",
+      "group": "intl_equity",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "SHY",
+      "name": "1-3Y Treasuries",
+      "group": "treasury",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "IEF",
+      "name": "7-10Y Treasuries",
+      "group": "treasury",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "TLT",
+      "name": "20+Y Treasuries",
+      "group": "treasury_long",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "TIP",
+      "name": "TIPS (Inflation-Linked)",
+      "group": "tips",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "LQD",
+      "name": "Investment-Grade Credit",
+      "group": "credit",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "HYG",
+      "name": "High-Yield Credit",
+      "group": "credit",
+      "first_date": "2007-04-11",
+      "last_date": "2026-06-18",
+      "observations": 4829,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "DBC",
+      "name": "Broad Commodities",
+      "group": "commodity",
+      "first_date": "2006-02-06",
+      "last_date": "2026-06-18",
+      "observations": 5124,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "GLD",
+      "name": "Gold",
+      "group": "gold",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "BIL",
+      "name": "1-3M T-Bills",
+      "group": "cash_like",
+      "first_date": "2007-05-30",
+      "last_date": "2026-06-18",
+      "observations": 4795,
+      "source": "yahoo",
+      "status": "included"
+    },
+    {
+      "ticker": "SHV",
+      "name": "Short Treasuries",
+      "group": "cash_like",
+      "first_date": "2007-01-11",
+      "last_date": "2026-06-18",
+      "observations": 4890,
+      "source": "yahoo",
+      "status": "included"
+    }
+  ],
+  "excluded_assets": [],
+  "no_lookahead_rule": "feature[t] uses data through t; signal[t] formed at t; position[t+1] uses signal[t]; return[t+1] earned by position[t+1]."
+}

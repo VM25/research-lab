@@ -1,0 +1,33 @@
+{
+  "project_name": "Systematic Alpha Research Lab",
+  "tagline": "Does this signal survive reality?",
+  "research_question": "Do simple systematic alpha signals survive costs, out-of-sample testing, robustness checks, and market stress?",
+  "headline": "Testing whether systematic alpha signals survive costs, out-of-sample validation, and market stress.",
+  "signal_count": 5,
+  "universe_summary": {
+    "asset_count": 15,
+    "asset_groups": 9,
+    "sample_start": "2006-01-03",
+    "sample_end": "2026-06-18",
+    "trading_days": 5147
+  },
+  "validation_standard": [
+    "Net-of-cost performance",
+    "Benchmark comparison",
+    "Train/test split",
+    "Walk-forward validation",
+    "Cost sensitivity",
+    "Parameter robustness",
+    "Rebalance sensitivity",
+    "Regime & crisis stress"
+  ],
+  "primary_cost_bps": 5,
+  "verdict_summary": {
+    "Survived": 3,
+    "Conditional": 1,
+    "Rejected": 1
+  },
+  "verdict_headline": "Of five signals, 3 survived, 1 was conditional, and 1 was rejected \u2014 discipline, not a single best backtest, separates them.",
+  "backtest_start": "2007-02-28",
+  "data_note": "Dividend- and split-adjusted close for 15 ETFs, 2006-01-03 to 2026-06-18. The cost-aware backtest runs from 2007-02 once a 12-month signal history exists, and each ETF enters on its own inception date."
+}

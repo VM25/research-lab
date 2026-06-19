@@ -1,0 +1,70 @@
+{
+  "order": [
+    "Survived",
+    "Conditional",
+    "Rejected"
+  ],
+  "counts": {
+    "Survived": 3,
+    "Conditional": 1,
+    "Rejected": 1
+  },
+  "groups": {
+    "Survived": [
+      {
+        "signal_name": "Time-Series Momentum",
+        "signal_family": "time_series_momentum",
+        "one_line_result": "Net Sharpe 0.57, max drawdown -15%, 5.7% CAGR net of 5 bps.",
+        "primary_evidence": "Net Sharpe 0.57 at 5 bps with -15.3% max drawdown (SPY drew down -55.2%).",
+        "main_weakness": "Performance is uneven across market regimes.",
+        "best_use_case": "Use as a long-only de-risking trend overlay that controls drawdowns, not as a standalone return-maximizing strategy.",
+        "final_research_note": "Time-Series Momentum holds up: net Sharpe 0.57, -15.3% max drawdown, and out-of-sample Sharpe 0.48. It survives realistic costs and parameter variation.",
+        "verdict": "Survived"
+      },
+      {
+        "signal_name": "Cross-Sectional Momentum",
+        "signal_family": "cross_sectional_momentum",
+        "one_line_result": "Net Sharpe 0.62, max drawdown -18%, 8.8% CAGR net of 5 bps.",
+        "primary_evidence": "Net Sharpe 0.62 at 5 bps with -18.4% max drawdown (SPY drew down -55.2%).",
+        "main_weakness": "Performance is uneven across market regimes.",
+        "best_use_case": "Use as a relative-strength allocation sleeve within a diversified book, not as proof of standalone alpha.",
+        "final_research_note": "Cross-Sectional Momentum holds up: net Sharpe 0.62, -18.4% max drawdown, and out-of-sample Sharpe 0.73. It survives realistic costs and parameter variation.",
+        "verdict": "Survived"
+      },
+      {
+        "signal_name": "Equal-Weight Signal Ensemble",
+        "signal_family": "ensemble",
+        "one_line_result": "Net Sharpe 0.59, max drawdown -22%, 7.7% CAGR net of 5 bps.",
+        "primary_evidence": "Net Sharpe 0.59 at 5 bps with -21.8% max drawdown (SPY drew down -55.2%).",
+        "main_weakness": "Performance is uneven across market regimes.",
+        "best_use_case": "Use as a diversified, lower-variance core blend, not as a single-signal bet or proof of alpha.",
+        "final_research_note": "Equal-Weight Signal Ensemble holds up: net Sharpe 0.59, -21.8% max drawdown, and out-of-sample Sharpe 0.59. It survives realistic costs and parameter variation.",
+        "verdict": "Survived"
+      }
+    ],
+    "Conditional": [
+      {
+        "signal_name": "Volatility-Scaled Momentum",
+        "signal_family": "volatility_scaled_momentum",
+        "one_line_result": "Net Sharpe 0.58, max drawdown -12%, 4.3% CAGR net of 5 bps.",
+        "primary_evidence": "Net Sharpe 0.58 at 5 bps with -11.8% max drawdown (SPY drew down -55.2%).",
+        "main_weakness": "Performance is uneven across market regimes.",
+        "best_use_case": "Use as a volatility-control overlay when drawdown control matters more than raw return, not as a return maximizer.",
+        "final_research_note": "Volatility-Scaled Momentum is conditional: it adds value mainly through risk control (net Sharpe 0.58, -11.8% max drawdown) rather than raw return, and depends on costs or regime.",
+        "verdict": "Conditional"
+      }
+    ],
+    "Rejected": [
+      {
+        "signal_name": "Short-Term Reversal",
+        "signal_family": "short_term_reversal",
+        "one_line_result": "Net Sharpe 0.45, max drawdown -29%, 5.2% CAGR net of 5 bps.",
+        "primary_evidence": "Net Sharpe 0.45 at 5 bps with -29.1% max drawdown (SPY drew down -55.2%).",
+        "main_weakness": "High turnover (12.9x/yr) makes it execution-sensitive.",
+        "best_use_case": "Not recommended as a standalone allocation on this evidence; at most a low-cost tactical input, never a return-maximizing strategy.",
+        "final_research_note": "Short-Term Reversal is rejected on this evidence: it does not clear simple benchmarks; net Sharpe 0.45, out-of-sample Sharpe 0.33.",
+        "verdict": "Rejected"
+      }
+    ]
+  }
+}

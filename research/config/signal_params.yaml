@@ -1,0 +1,51 @@
+# Signal parameters. Primary settings are the defaults reported everywhere.
+# Robustness grids are consumed by validation/robustness.py.
+
+rebalance_frequency: monthly      # primary rebalance for all signals
+
+time_series_momentum:
+  lookback_long: 252              # 12 months
+  lookback_skip: 21               # skip most recent 1 month (12-1 momentum)
+  default_param: "12M-1M"
+  robustness_grid:                # (long, skip) in trading days
+    "6M":     {lookback_long: 126, lookback_skip: 0}
+    "9M":     {lookback_long: 189, lookback_skip: 0}
+    "12M":    {lookback_long: 252, lookback_skip: 0}
+    "12M-1M": {lookback_long: 252, lookback_skip: 21}
+
+cross_sectional_momentum:
+  lookback_long: 252
+  lookback_skip: 21
+  top_quantile: 0.70              # select assets at/above 70th percentile (top 30%)
+  default_param: "top30"
+  robustness_grid:                # selection breadth
+    "top20": {top_quantile: 0.80}
+    "top30": {top_quantile: 0.70}
+    "top40": {top_quantile: 0.60}
+
+short_term_reversal:
+  lookback_return: 5              # 5-day return
+  zscore_window: 63              # rolling mean/std window for the z-score
+  entry_threshold: -1.0           # buy when reversal_z <= -1.0
+  default_param: "5D"
+  robustness_grid:
+    "5D":  {lookback_return: 5}
+    "10D": {lookback_return: 10}
+    "21D": {lookback_return: 21}
+
+volatility_scaled_momentum:
+  vol_window: 63                  # realized-vol lookback (days)
+  target_vol: 0.10                # 10% annualized target
+  default_param: "63D"
+  robustness_grid:                # vol estimation window
+    "21D":  {vol_window: 21}
+    "63D":  {vol_window: 63}
+    "126D": {vol_window: 126}
+
+ensemble:
+  members:
+    - time_series_momentum
+    - cross_sectional_momentum
+    - short_term_reversal
+    - volatility_scaled_momentum
+  entry_threshold: 0.0            # include when mean standardized score > 0

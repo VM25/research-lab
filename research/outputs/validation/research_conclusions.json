@@ -1,0 +1,17 @@
+{
+  "research_question": "Do simple systematic alpha signals survive costs, out-of-sample testing, robustness checks, and market stress?",
+  "verdict_counts": {
+    "Survived": 3,
+    "Conditional": 1,
+    "Rejected": 1
+  },
+  "headline": "Of five signals, 3 survived, 1 was conditional, and 1 was rejected \u2014 discipline, not a single best backtest, separates them.",
+  "key_findings": [
+    "Time-Series Momentum: Survived (net Sharpe 0.57, max DD -15.3%).",
+    "Cross-Sectional Momentum: Survived (net Sharpe 0.62, max DD -18.4%).",
+    "Short-Term Reversal: Rejected (net Sharpe 0.45, max DD -29.1%).",
+    "Volatility-Scaled Momentum: Conditional (net Sharpe 0.58, max DD -11.8%).",
+    "Equal-Weight Signal Ensemble: Survived (net Sharpe 0.59, max DD -21.8%)."
+  ],
+  "signals_evaluated": 5
+}

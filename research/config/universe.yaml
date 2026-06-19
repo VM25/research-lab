@@ -1,0 +1,36 @@
+# Research universe — liquid ETFs across major asset groups.
+# Each ticker carries the asset group used for portfolio constraints.
+# `group` keys map to the constraint caps in backtest_params.yaml.
+
+requested_start: "2006-01-01"   # earliest date we attempt to download
+trading_days_per_year: 252
+
+# Synthetic cash bucket. Strategies park unused capital here; it earns the
+# risk-free (13-week T-bill) daily rate. This is the "cash fallback".
+cash_asset: CASH
+
+assets:
+  - {ticker: SPY, name: "S&P 500",                 group: us_equity}
+  - {ticker: QQQ, name: "Nasdaq 100",              group: us_equity}
+  - {ticker: IWM, name: "US Small Cap",            group: us_equity}
+  - {ticker: EFA, name: "Developed ex-US Equity",  group: intl_equity}
+  - {ticker: EEM, name: "Emerging Markets Equity", group: intl_equity}
+  - {ticker: SHY, name: "1-3Y Treasuries",         group: treasury}
+  - {ticker: IEF, name: "7-10Y Treasuries",        group: treasury}
+  - {ticker: TLT, name: "20+Y Treasuries",         group: treasury_long}
+  - {ticker: TIP, name: "TIPS (Inflation-Linked)", group: tips}
+  - {ticker: LQD, name: "Investment-Grade Credit", group: credit}
+  - {ticker: HYG, name: "High-Yield Credit",       group: credit}
+  - {ticker: DBC, name: "Broad Commodities",       group: commodity}
+  - {ticker: GLD, name: "Gold",                    group: gold}
+  - {ticker: BIL, name: "1-3M T-Bills",            group: cash_like}
+  - {ticker: SHV, name: "Short Treasuries",        group: cash_like}
+
+# Tickers used to build benchmarks (must be present in `assets`).
+benchmarks:
+  spy_buy_hold:   {tickers: [SPY], weights: [1.0]}
+  sixty_forty:    {tickers: [SPY, IEF], weights: [0.6, 0.4]}
+  # equal_weight_universe and cash_proxy are constructed in code.
+
+# Cash / T-bill proxy ETF (used for the cash benchmark cross-check).
+cash_proxy_etf: BIL

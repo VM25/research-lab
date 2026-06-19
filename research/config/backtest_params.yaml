@@ -1,0 +1,46 @@
+# Backtest engine configuration.
+
+initial_value: 1.0
+trading_days_per_year: 252
+min_lookback_days: 252            # an asset is eligible once it has this much history
+
+# Default weighting method per signal family.
+weighting_method:
+  time_series_momentum:       equal_weight
+  cross_sectional_momentum:   equal_weight
+  short_term_reversal:        equal_weight
+  volatility_scaled_momentum: vol_scaled       # base momentum weight * vol scale
+  ensemble:                   equal_weight
+
+# Transaction cost scenarios (basis points of traded notional).
+costs_bps:
+  low: 1
+  base: 5
+  high: 10
+  stress: 25
+primary_cost: base                # 5 bps is the headline reported result
+
+# Portfolio constraints (long-only, no leverage, no shorting).
+constraints:
+  max_single_asset: 0.25
+  leverage: false
+  shorting: false
+  group_caps:
+    us_equity:     0.70
+    intl_equity:   0.40
+    treasury:      0.70
+    treasury_long: 0.40
+    tips:          0.70           # TIPS treated under broad fixed-income headroom
+    credit:        0.30
+    commodity:     0.35
+    gold:          0.25
+    cash_like:     1.00
+    # CASH (synthetic) is uncapped — it is the fallback bucket.
+
+# Benchmarks applied with the same calendar and the primary cost model.
+benchmarks:
+  - spy_buy_hold
+  - sixty_forty
+  - equal_weight_universe
+  - cash_proxy
+  - inverse_volatility           # optional benchmark

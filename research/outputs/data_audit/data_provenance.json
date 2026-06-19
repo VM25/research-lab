@@ -1,0 +1,339 @@
+{
+  "sources": [
+    "yahoo",
+    "fred",
+    "NBER"
+  ],
+  "series": {
+    "SPY": {
+      "source_name": "yahoo",
+      "ticker_or_series": "SPY",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "QQQ": {
+      "source_name": "yahoo",
+      "ticker_or_series": "QQQ",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "IWM": {
+      "source_name": "yahoo",
+      "ticker_or_series": "IWM",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "EFA": {
+      "source_name": "yahoo",
+      "ticker_or_series": "EFA",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "EEM": {
+      "source_name": "yahoo",
+      "ticker_or_series": "EEM",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "SHY": {
+      "source_name": "yahoo",
+      "ticker_or_series": "SHY",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "IEF": {
+      "source_name": "yahoo",
+      "ticker_or_series": "IEF",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "TLT": {
+      "source_name": "yahoo",
+      "ticker_or_series": "TLT",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "TIP": {
+      "source_name": "yahoo",
+      "ticker_or_series": "TIP",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "LQD": {
+      "source_name": "yahoo",
+      "ticker_or_series": "LQD",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "HYG": {
+      "source_name": "yahoo",
+      "ticker_or_series": "HYG",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2007-04-11",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "DBC": {
+      "source_name": "yahoo",
+      "ticker_or_series": "DBC",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-02-06",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "GLD": {
+      "source_name": "yahoo",
+      "ticker_or_series": "GLD",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "BIL": {
+      "source_name": "yahoo",
+      "ticker_or_series": "BIL",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2007-05-30",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "SHV": {
+      "source_name": "yahoo",
+      "ticker_or_series": "SHV",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2007-01-11",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": true,
+      "adjusted_price_available": true,
+      "field_coverage": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "missing_values": 0,
+      "notes": "Dividend- and split-adjusted close (total-return approximation)."
+    },
+    "vix": {
+      "source_name": "yahoo",
+      "ticker_or_series": "^VIX",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "adjusted_price_used": false,
+      "notes": "Macro/regime input; observable-lagged before use."
+    },
+    "ten_year_yield": {
+      "source_name": "yahoo",
+      "ticker_or_series": "^TNX",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-12",
+      "adjusted_price_used": false,
+      "notes": "Macro/regime input; observable-lagged before use."
+    },
+    "short_rate_yield": {
+      "source_name": "yahoo",
+      "ticker_or_series": "^IRX",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-12",
+      "adjusted_price_used": false,
+      "notes": "Macro/regime input; observable-lagged before use."
+    },
+    "cpi": {
+      "source_name": "fred",
+      "ticker_or_series": "CPIAUCSL",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "1947-01-01",
+      "last_date": "2026-05-01",
+      "adjusted_price_used": false,
+      "notes": "Macro/regime input; observable-lagged before use."
+    },
+    "nber_recession": {
+      "source_name": "NBER",
+      "ticker_or_series": "US recession dates",
+      "download_timestamp": "2026-06-19T20:01:20Z",
+      "first_date": "2007-12-01",
+      "last_date": "2020-04-30",
+      "adjusted_price_used": false,
+      "notes": "Documented historical recession windows (constants)."
+    }
+  }
+}

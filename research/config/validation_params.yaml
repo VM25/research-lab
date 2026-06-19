@@ -1,0 +1,42 @@
+# Validation and robustness configuration.
+
+train_test:
+  train_start: "2006-01-01"
+  train_end:   "2016-12-31"
+  test_start:  "2017-01-01"
+  # test_end defaults to the latest available date.
+
+# Expanding-window walk-forward: parameters chosen on train, frozen, tested.
+walk_forward:
+  windows:
+    - {train_start: "2006-01-01", train_end: "2012-12-31", test_start: "2013-01-01", test_end: "2016-12-31"}
+    - {train_start: "2006-01-01", train_end: "2016-12-31", test_start: "2017-01-01", test_end: "2019-12-31"}
+    - {train_start: "2006-01-01", train_end: "2019-12-31", test_start: "2020-01-01", test_end: "2022-12-31"}
+    - {train_start: "2006-01-01", train_end: "2022-12-31", test_start: "2023-01-01", test_end: null}
+
+rebalance_frequencies:
+  - weekly
+  - monthly
+  - quarterly
+
+# Regime thresholds. VIX/rate/inflation series are observable-lagged before use.
+regimes:
+  high_vol_vix: 25.0              # VIX above this => High Volatility regime
+  rate_shock_bp_3m: 0.75          # 3-month change in 10Y yield (pct points) => Rate Shock
+  inflation_cpi_yoy: 0.04         # CPI YoY above this => Inflation Stress
+  risk_off_drawdown: -0.10        # SPY drawdown below this => Risk-Off
+
+crisis_periods:
+  - {name: "Global Financial Crisis",        start: "2007-10-01", end: "2009-03-31"}
+  - {name: "Eurozone / US Downgrade Stress",  start: "2011-07-01", end: "2011-12-31"}
+  - {name: "COVID Crash",                     start: "2020-02-01", end: "2020-04-30"}
+  - {name: "Inflation / Rate Shock",          start: "2022-01-01", end: "2022-12-31"}
+  - {name: "Higher-Rate Regime",              start: "2023-01-01", end: null}
+
+# Classification thresholds (documented, applied in code — verdicts are computed).
+classification:
+  survived_min_test_sharpe: 0.40
+  survived_min_param_hit_rate: 0.60     # share of param sets with positive net excess vs cash
+  rejected_max_test_sharpe: 0.10
+  rejected_cost_drag_ratio: 0.60        # cost drag eats > this share of gross return => cost failure
+  high_turnover_annual: 8.0             # sum|dw|/yr above this is flagged excessive

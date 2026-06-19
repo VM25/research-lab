@@ -1,0 +1,61 @@
+{
+  "allowed_failure_types": [
+    "cost_failure",
+    "turnover_failure",
+    "parameter_fragility",
+    "regime_dependency",
+    "drawdown_failure",
+    "out_of_sample_failure",
+    "benchmark_underperformance"
+  ],
+  "signals": [
+    {
+      "strategy_name": "Time-Series Momentum",
+      "signal_family": "time_series_momentum",
+      "failure_modes": [
+        "regime_dependency"
+      ],
+      "primary_failure_mode": "regime_dependency",
+      "notes": "regime_dependency"
+    },
+    {
+      "strategy_name": "Cross-Sectional Momentum",
+      "signal_family": "cross_sectional_momentum",
+      "failure_modes": [
+        "regime_dependency"
+      ],
+      "primary_failure_mode": "turnover_failure",
+      "notes": "regime_dependency"
+    },
+    {
+      "strategy_name": "Short-Term Reversal",
+      "signal_family": "short_term_reversal",
+      "failure_modes": [
+        "turnover_failure",
+        "regime_dependency",
+        "benchmark_underperformance"
+      ],
+      "primary_failure_mode": "cost_failure",
+      "notes": "turnover_failure, regime_dependency, benchmark_underperformance"
+    },
+    {
+      "strategy_name": "Volatility-Scaled Momentum",
+      "signal_family": "volatility_scaled_momentum",
+      "failure_modes": [
+        "regime_dependency",
+        "out_of_sample_failure"
+      ],
+      "primary_failure_mode": "drawdown_failure",
+      "notes": "regime_dependency, out_of_sample_failure"
+    },
+    {
+      "strategy_name": "Equal-Weight Signal Ensemble",
+      "signal_family": "ensemble",
+      "failure_modes": [
+        "regime_dependency"
+      ],
+      "primary_failure_mode": "regime_dependency",
+      "notes": "regime_dependency"
+    }
+  ]
+}

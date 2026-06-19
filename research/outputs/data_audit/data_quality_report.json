@@ -1,0 +1,111 @@
+{
+  "requested_start_date": "2006-01-01",
+  "ticker_count": 15,
+  "final_tickers": [
+    "BIL",
+    "DBC",
+    "EEM",
+    "EFA",
+    "GLD",
+    "HYG",
+    "IEF",
+    "IWM",
+    "LQD",
+    "QQQ",
+    "SHV",
+    "SHY",
+    "SPY",
+    "TIP",
+    "TLT"
+  ],
+  "excluded_tickers": [],
+  "exclusion_reasons": {},
+  "sample_start": "2006-01-03",
+  "sample_end": "2026-06-18",
+  "actual_start_date": "2006-01-03",
+  "actual_end_date": "2026-06-18",
+  "row_count": 76255,
+  "raw_row_count": 76255,
+  "missing_values": 0,
+  "duplicate_rows": 0,
+  "invalid_prices": 0,
+  "extreme_return_flags": 0,
+  "final_observation_count": 76255,
+  "per_ticker_history": {
+    "BIL": {
+      "first_date": "2007-05-30",
+      "last_date": "2026-06-18",
+      "observations": 4795
+    },
+    "DBC": {
+      "first_date": "2006-02-06",
+      "last_date": "2026-06-18",
+      "observations": 5124
+    },
+    "EEM": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "EFA": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "GLD": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "HYG": {
+      "first_date": "2007-04-11",
+      "last_date": "2026-06-18",
+      "observations": 4829
+    },
+    "IEF": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "IWM": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "LQD": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "QQQ": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "SHV": {
+      "first_date": "2007-01-11",
+      "last_date": "2026-06-18",
+      "observations": 4890
+    },
+    "SHY": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "SPY": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "TIP": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    },
+    "TLT": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-06-18",
+      "observations": 5147
+    }
+  }
+}

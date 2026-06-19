@@ -1,0 +1,47 @@
+[
+  {
+    "benchmark_name": "SPY Buy & Hold",
+    "benchmark_key": "spy_buy_hold",
+    "cagr": 0.111348,
+    "annualized_volatility": 0.196879,
+    "sharpe": 0.559592,
+    "max_drawdown": -0.551894,
+    "annualized_turnover": 0.0
+  },
+  {
+    "benchmark_name": "60/40 (SPY/IEF)",
+    "benchmark_key": "sixty_forty",
+    "cagr": 0.082771,
+    "annualized_volatility": 0.110419,
+    "sharpe": 0.641322,
+    "max_drawdown": -0.326012,
+    "annualized_turnover": 0.219366
+  },
+  {
+    "benchmark_name": "Equal-Weight Universe",
+    "benchmark_key": "equal_weight_universe",
+    "cagr": 0.060699,
+    "annualized_volatility": 0.084137,
+    "sharpe": 0.566466,
+    "max_drawdown": -0.264163,
+    "annualized_turnover": 0.297763
+  },
+  {
+    "benchmark_name": "Cash / T-Bills",
+    "benchmark_key": "cash_proxy",
+    "cagr": 0.014929,
+    "annualized_volatility": 0.001142,
+    "sharpe": null,
+    "max_drawdown": 0.0,
+    "annualized_turnover": 0.0
+  },
+  {
+    "benchmark_name": "Inverse-Volatility",
+    "benchmark_key": "inverse_volatility",
+    "cagr": 0.020222,
+    "annualized_volatility": 0.009987,
+    "sharpe": 0.52945,
+    "max_drawdown": -0.034871,
+    "annualized_turnover": 0.951674
+  }
+]
