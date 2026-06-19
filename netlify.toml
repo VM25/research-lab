@@ -1,0 +1,17 @@
+# Netlify configuration for the Systematic Alpha Research Lab website.
+# The site is a Next.js static export living in the web/ subfolder.
+
+[build]
+  base = "web"            # run the build inside web/
+  command = "npm run build"
+  publish = "out"         # next static export output (relative to base -> web/out)
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Static export — no Next.js server runtime is needed.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
