@@ -26,7 +26,7 @@ export default function Hero({ overview, board }: {
         <div className="mast-grid">
           <div className="mast-lead">
             <span className="mast-eyebrow">Research mandate</span>
-            <h1 className="mast-question">Does this signal<br /><em className="mast-q-em">survive reality?</em></h1>
+            <h1 className="mast-question">Does this signal<br /><span className="mast-q-em">survive reality?</span></h1>
             <p className="mast-mandate">{overview.headline} Each of {overview.signal_count} signals is treated as a research case and carried through one validation sequence.</p>
           </div>
 

@@ -45,7 +45,7 @@
 
   /* Chivo = institutional grotesque (identity/headings/figures);
      Fira Sans = humanist body; Fira Mono = data/labels/notation. */
-  --font-hook: "Playfair Display", Georgia, serif;   /* hero hook only */
+  --font-hook: "Hubot Sans", system-ui, sans-serif;  /* hero hook only */
   --font-display: "Chivo", system-ui, sans-serif;
   --font-serif: "Chivo", system-ui, sans-serif;   /* alias kept for existing refs */
   --font-sans: "Fira Sans", system-ui, sans-serif;
@@ -266,11 +266,11 @@ button { cursor: pointer; }
 }
 .mast-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--ink-4); }
 .mast-question {
-  font-family: var(--font-hook); font-weight: 600; color: var(--accent);
-  font-size: clamp(44px, 6vw, 82px); line-height: 1.04; letter-spacing: -0.01em;
-  margin: 22px 0 0; padding-bottom: 0.08em;
+  font-family: var(--font-hook); font-weight: 800; color: var(--ink);
+  font-size: clamp(46px, 6.3vw, 86px); line-height: 0.99; letter-spacing: -0.03em;
+  margin: 22px 0 0;
 }
-.mast-q-em { font-style: italic; font-weight: 500; }
+.mast-q-em { color: var(--accent); font-style: normal; font-weight: 800; }
 .mast-mandate { margin-top: 26px; max-width: 48ch; font-size: 15px; line-height: 1.62; color: var(--ink-2); }
 
 .mast-side { padding-top: 5px; }
