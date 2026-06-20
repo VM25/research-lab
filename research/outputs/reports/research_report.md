@@ -30,23 +30,23 @@ A signal is credible only if it survives the full process: hypothesis → signal
 | SHV | cash like | 2007-01-11 | 2026-06-18 | Yahoo Finance |
 ## 3. Signal Cases
 ### Time-Series Momentum
-- *Hypothesis:* If an asset has trended up over the past year, it tends to keep trending — so hold the assets that are already winning.
+- *Hypothesis:* Assets in a sustained year-long uptrend tend to continue; the strategy holds those with positive medium-term trend.
 - *Formula:* `momentum_12_1[t] = adj_close[t-21] / adj_close[t-252] - 1`
 - *Portfolio rule:* Hold every asset with positive 12-1 momentum, equal-weighted; park the rest in cash.
 ### Cross-Sectional Momentum
-- *Hypothesis:* Rank every asset by trend strength and own only the leaders — relative strength tends to persist.
+- *Hypothesis:* The strongest-trending assets relative to the universe tend to keep leading; the strategy holds only the relative leaders.
 - *Formula:* `rank[t,i] = percentile_rank(adj_close[t-21,i] / adj_close[t-252,i] - 1)`
 - *Portfolio rule:* Select the top 30% of assets by relative momentum, equal-weighted; cash if none qualify.
 ### Short-Term Reversal
-- *Hypothesis:* When an asset sells off sharply over a few days, it often bounces — so buy the most oversold assets.
+- *Hypothesis:* Assets with a sharp multi-day sell-off tend to partially recover; the strategy holds the most oversold names.
 - *Formula:* `reversal_z[t,i] = (ret_5d[t,i] - mean_63(ret_5d)) / std_63(ret_5d)`
 - *Portfolio rule:* Hold the most oversold assets (z <= -1), equal-weighted; cash if none qualify.
 ### Volatility-Scaled Momentum
-- *Hypothesis:* Run the trend strategy, but shrink positions when markets get volatile to keep risk steady.
+- *Hypothesis:* Trend-following with position sizes scaled down as volatility rises, holding portfolio risk closer to a fixed target.
 - *Formula:* `scale[t,i] = min(1, target_vol / realized_vol_63[t,i]); weight = momentum_weight * scale`
 - *Portfolio rule:* Take momentum positions, then scale each by its volatility target; unused weight to cash.
 ### Equal-Weight Signal Ensemble
-- *Hypothesis:* Average the votes of the four signals and hold what the committee agrees is attractive.
+- *Hypothesis:* Combine the four signals' standardized scores and hold the assets the blend rates positively, reducing reliance on any single signal.
 - *Formula:* `ensemble_score[t,i] = mean(standardized scores of the 4 signals)`
 - *Portfolio rule:* Hold every asset with a positive average score, equal-weighted; cash otherwise.
 ## 4. Backtest Methodology

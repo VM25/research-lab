@@ -97,6 +97,7 @@ export interface Overview {
   primary_cost_bps: number;
   verdict_summary: Record<Verdict, number>;
   verdict_headline: string;
+  backtest_start?: string;
   data_note: string;
 }
 

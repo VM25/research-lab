@@ -7,14 +7,8 @@ export const pctSigned = (x: number | null | undefined, d = 1): string =>
 export const num = (x: number | null | undefined, d = 2): string =>
   x === null || x === undefined || Number.isNaN(x) ? "—" : x.toFixed(d);
 
-export const verdictClass = (v: string): string =>
-  v === "Survived" ? "v-survived" : v === "Rejected" ? "v-rejected" : "v-conditional";
-
-export const verdictGlyph = (v: string): string =>
-  v === "Survived" ? "✓" : v === "Rejected" ? "✕" : "≈";
-
-export const verdictColorVar = (v: string): string =>
-  v === "Survived" ? "var(--survived)" : v === "Rejected" ? "var(--rejected)" : "var(--conditional)";
+export const clsClass = (v: string): string =>
+  v === "Survived" ? "cls-survived" : v === "Rejected" ? "cls-rejected" : "cls-conditional";
 
 export const failureLabel = (f: string): string =>
   ({

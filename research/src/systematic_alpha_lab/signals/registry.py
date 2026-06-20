@@ -23,8 +23,8 @@ SIGNAL_META = {
             "regimes persist."
         ),
         "plain_english_hypothesis": (
-            "If an asset has trended up over the past year, it tends to keep "
-            "trending — so hold the assets that are already winning."
+            "Assets in a sustained year-long uptrend tend to continue; the strategy "
+            "holds those with positive medium-term trend."
         ),
         "formula": "momentum_12_1[t] = adj_close[t-21] / adj_close[t-252] - 1",
         "formula_short": "12-month return, skipping the last month.",
@@ -51,8 +51,8 @@ SIGNAL_META = {
             "weaker ones."
         ),
         "plain_english_hypothesis": (
-            "Rank every asset by trend strength and own only the leaders — "
-            "relative strength tends to persist."
+            "The strongest-trending assets relative to the universe tend to keep "
+            "leading; the strategy holds only the relative leaders."
         ),
         "formula": (
             "rank[t,i] = percentile_rank(adj_close[t-21,i] / adj_close[t-252,i] - 1)"
@@ -81,8 +81,8 @@ SIGNAL_META = {
             "overreaction, liquidity pressure, or temporary positioning."
         ),
         "plain_english_hypothesis": (
-            "When an asset sells off sharply over a few days, it often bounces — "
-            "so buy the most oversold assets."
+            "Assets with a sharp multi-day sell-off tend to partially recover; the "
+            "strategy holds the most oversold names."
         ),
         "formula": (
             "reversal_z[t,i] = (ret_5d[t,i] - mean_63(ret_5d)) / std_63(ret_5d)"
@@ -111,8 +111,8 @@ SIGNAL_META = {
             "during high-volatility periods."
         ),
         "plain_english_hypothesis": (
-            "Run the trend strategy, but shrink positions when markets get "
-            "volatile to keep risk steady."
+            "Trend-following with position sizes scaled down as volatility rises, "
+            "holding portfolio risk closer to a fixed target."
         ),
         "formula": (
             "scale[t,i] = min(1, target_vol / realized_vol_63[t,i]); "
@@ -142,8 +142,8 @@ SIGNAL_META = {
             "signal."
         ),
         "plain_english_hypothesis": (
-            "Average the votes of the four signals and hold what the committee "
-            "agrees is attractive."
+            "Combine the four signals' standardized scores and hold the assets the "
+            "blend rates positively, reducing reliance on any single signal."
         ),
         "formula": "ensemble_score[t,i] = mean(standardized scores of the 4 signals)",
         "formula_short": "Average of the four signals' standardized scores.",

@@ -1,71 +1,94 @@
 "use client";
 
 import { SignalCase as Case } from "@/lib/data";
-import { verdictClass, verdictGlyph, verdictColorVar } from "@/lib/format";
+import { pct, num } from "@/lib/format";
+import Classification from "./Classification";
+import SectionHead from "./SectionHead";
 
 export default function SignalCase({ c }: { c: Case }) {
+  const m = c.key_metrics;
   return (
-    <section className="section-pad case-section" id="signal-case">
-      <div className="wrap">
-        <div className="section-intro">
-          <span className="eyebrow">Step 02 · Understand the hypothesis</span>
-          <h2>{c.signal_name}</h2>
-          <p>{c.plain_english_hypothesis}</p>
-        </div>
+    <section className="block" id="signal-case">
+      <div className="frame">
+        <SectionHead index="02" kicker="Research file"
+          title={c.signal_name}
+          lede={c.plain_english_hypothesis} />
 
-        <div className="case-grid">
-          <div className="case-left">
-            <div className="panel case-block">
-              <div className="cb-label mono">The hypothesis</div>
-              <p className="cb-body">{c.hypothesis}</p>
-            </div>
-
-            <div className="case-two">
-              <div className="panel case-block">
-                <div className="cb-label mono">How it is measured</div>
-                <p className="cb-body small">{c.formula_short}</p>
-                <code className="formula mono">{c.formula}</code>
-                <div className="cb-meta mono">
-                  <span>Lookback · {c.lookback_window}</span>
-                  <span>Rebalance · {c.rebalance_frequency}</span>
-                </div>
-              </div>
-              <div className="panel case-block">
-                <div className="cb-label mono">How it becomes a portfolio</div>
-                <p className="cb-body small">{c.portfolio_rule}</p>
-                <div className="cb-meta mono">
-                  <span>Weighting · {c.weighting_method.replace(/_/g, " ")}</span>
-                  <span>Long-only · cash fallback</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="case-two">
-              <div className="panel case-block strength">
-                <div className="cb-label mono">Why it might work</div>
-                <ul className="case-list">{c.expected_strength.map((s, i) => <li key={i}>{s}</li>)}</ul>
-              </div>
-              <div className="panel case-block weakness">
-                <div className="cb-label mono">What can break it</div>
-                <ul className="case-list">{c.expected_weakness.map((s, i) => <li key={i}>{s}</li>)}</ul>
-              </div>
+        <div className="s-body">
+          <div className="case-head">
+            <div className="case-head-l">
+              <Classification verdict={c.verdict} size="md" />
+              <span className="case-meta" style={{ marginTop: 0 }}>
+                <span><b>{pct(m.cagr)}</b> CAGR net</span>
+                <span><b>{num(m.sharpe)}</b> Sharpe</span>
+                <span><b>{pct(m.max_drawdown, 0)}</b> max drawdown</span>
+                <span><b>{num(m.annualized_turnover, 1)}×</b> turnover/yr</span>
+              </span>
             </div>
           </div>
 
-          <aside className="case-verdict panel" style={{ borderColor: verdictColorVar(c.verdict) }}>
-            <div className="cv-top">
-              <span className="cv-label mono">Final verdict</span>
-              <span className={`verdict-chip ${verdictClass(c.verdict)}`}>
-                <span className="v-glyph">{verdictGlyph(c.verdict)}</span> {c.verdict}
-              </span>
+          <div className="case-grid">
+            <div className="case-main">
+              <div className="case-sec">
+                <div className="case-sec-h"><span className="label">Signal thesis</span></div>
+                <p className="case-prose">{c.hypothesis}</p>
+              </div>
+
+              <div className="case-sec">
+                <div className="case-sec-h"><span className="label">Definition</span></div>
+                <p className="case-prose" style={{ marginBottom: 14 }}>{c.formula_short}</p>
+                <code className="formula">{c.formula}</code>
+                <div className="case-meta">
+                  <span>Lookback&nbsp; <b>{c.lookback_window}</b></span>
+                  <span>Rebalance&nbsp; <b>{c.rebalance_frequency}</b></span>
+                </div>
+              </div>
+
+              <div className="case-sec">
+                <div className="case-sec-h"><span className="label">Portfolio construction</span></div>
+                <p className="case-prose">{c.portfolio_rule}</p>
+                <div className="case-meta">
+                  <span>Weighting&nbsp; <b>{c.weighting_method.replace(/_/g, " ")}</b></span>
+                  <span>Constraints&nbsp; <b>long-only · no leverage · cash fallback</b></span>
+                </div>
+              </div>
+
+              <div className="case-sec">
+                <div className="case-cols">
+                  <div>
+                    <div className="case-sec-h"><span className="label">Conditions for success</span></div>
+                    <ol className="case-list">{c.expected_strength.map((s, i) => <li key={i}>{s}</li>)}</ol>
+                  </div>
+                  <div>
+                    <div className="case-sec-h"><span className="label">Failure conditions</span></div>
+                    <ol className="case-list">{c.expected_weakness.map((s, i) => <li key={i}>{s}</li>)}</ol>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="cv-note">{c.verdict_reason}</p>
-            <div className="cv-evidence">
-              <div className="cv-sub mono">Best use case</div>
-              <p>{c.best_use_case}</p>
-            </div>
-            <div className="cv-hint mono">↓ The evidence and stress tests behind this verdict</div>
-          </aside>
+
+            <aside className="case-aside">
+              <div className="record-h">
+                <span className="label">Research classification</span>
+                <Classification verdict={c.verdict} />
+              </div>
+              <p className="record-note">{c.verdict_reason}</p>
+
+              <div className="record-block">
+                <span className="label">Best use</span>
+                <p className="defval">{c.best_use_case}</p>
+              </div>
+              <div className="record-block">
+                <span className="label">Recorded weaknesses</span>
+                <ul style={{ margin: "8px 0 0", padding: 0, listStyle: "none" }}>
+                  {c.weaknesses.map((w, i) => (
+                    <li key={i} className="defval" style={{ padding: "6px 0", borderBottom: "1px solid var(--rule)", fontSize: 13.5 }}>{w}</li>
+                  ))}
+                </ul>
+              </div>
+              <p className="kicker" style={{ marginTop: 22, color: "var(--ink-4)" }}>Evidence and validation follow below ↓</p>
+            </aside>
+          </div>
         </div>
       </div>
     </section>

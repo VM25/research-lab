@@ -1,51 +1,73 @@
 "use client";
 
+import { Fragment } from "react";
 import { ClassificationBoard, Verdict } from "@/lib/data";
-import { verdictClass, verdictGlyph } from "@/lib/format";
+import Classification from "./Classification";
+import SectionHead from "./SectionHead";
 
 const DESCRIPT: Record<Verdict, string> = {
-  Survived: "Useful net-of-cost performance, controlled drawdowns, and credible out-of-sample evidence that does not hinge on one setting.",
-  Conditional: "Works under specific regimes, costs, or as a risk overlay — valuable, but not standalone alpha.",
-  Rejected: "Costs, turnover, benchmark-inferiority, or instability undo it. A clear negative result is still a result.",
+  Survived: "Useful net-of-cost performance, controlled drawdowns, and credible out-of-sample evidence that does not depend on a single parameter choice.",
+  Conditional: "Adds value under specific regimes or cost levels, or as a risk-control overlay — useful, but not standalone alpha.",
+  Rejected: "Costs, turnover, benchmark-relative weakness, or instability undo the signal. A documented negative result.",
 };
 
 export default function VerdictBoard({ board, onSelect, currentFamily }: {
   board: ClassificationBoard; onSelect: (f: string) => void; currentFamily: string;
 }) {
   return (
-    <section className="section-pad verdict-section" id="verdict-board">
-      <div className="wrap">
-        <div className="section-intro">
-          <span className="eyebrow">Step 05 · The verdict board</span>
-          <h2>Which signals survived reality?</h2>
-          <p>Every signal lands in one of three buckets, each backed by the same evidence you just inspected. Click any card to investigate it.</p>
-        </div>
+    <section className="block" id="verdict-board">
+      <div className="frame">
+        <SectionHead index="05" kicker="Research classification"
+          title="Classification ledger"
+          lede="The committee classification for each signal, grouped by verdict and backed by the same evidence inspected above. Select any row to reopen its file." />
 
-        <div className="board-grid">
-          {board.order.map((v) => (
-            <div key={v} className={`board-col ${verdictClass(v)}`}>
-              <div className="board-col-head">
-                <span className="bc-glyph v-glyph">{verdictGlyph(v)}</span>
-                <h3 className="bc-title">{v}</h3>
-                <span className="bc-count mono">{board.counts[v]}</span>
-              </div>
-              <p className="bc-desc">{DESCRIPT[v]}</p>
-              <div className="board-cards">
-                {board.groups[v].length === 0 && <div className="board-empty mono">None in this bucket</div>}
-                {board.groups[v].map((card) => (
-                  <button key={card.signal_family}
-                          className={`board-card ${card.signal_family === currentFamily ? "active" : ""}`}
-                          onClick={() => onSelect(card.signal_family)}>
-                    <div className="boc-name">{card.signal_name}</div>
-                    <div className="boc-result mono">{card.one_line_result}</div>
-                    <div className="boc-row"><span className="boc-k">Evidence</span><span>{card.primary_evidence}</span></div>
-                    <div className="boc-row"><span className="boc-k">Weakness</span><span>{card.main_weakness}</span></div>
-                    <div className="boc-row"><span className="boc-k">Best use</span><span>{card.best_use_case}</span></div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="s-body">
+          <table className="board-table">
+            <thead>
+              <tr>
+                <th style={{ width: "26%" }}>Signal</th>
+                <th style={{ width: "26%" }}>Primary evidence</th>
+                <th style={{ width: "20%" }}>Principal weakness</th>
+                <th className="col-note">Research note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {board.order.map((v) => {
+                const cards = board.groups[v];
+                return (
+                  <Fragment key={v}>
+                    <tr className="board-grouphead">
+                      <td colSpan={4}>
+                        <div className="bg-h">
+                          <Classification verdict={v} size="md" />
+                          <span className="bg-count">{board.counts[v]} {board.counts[v] === 1 ? "signal" : "signals"}</span>
+                        </div>
+                        <div className="bg-desc">{DESCRIPT[v]}</div>
+                      </td>
+                    </tr>
+                    {cards.length === 0 && (
+                      <tr key={`e-${v}`}><td colSpan={4} className="dim" style={{ fontStyle: "italic" }}>None in this category.</td></tr>
+                    )}
+                    {cards.map((card) => (
+                      <tr key={card.signal_family}
+                          className={`board-row ${card.signal_family === currentFamily ? "active" : ""}`}
+                          onClick={() => onSelect(card.signal_family)} tabIndex={0}
+                          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(card.signal_family); } }}>
+                        <td>
+                          <div className="board-signame">{card.signal_name}</div>
+                          <div className="board-result">{card.one_line_result}</div>
+                          <div className="board-cell-k" style={{ marginTop: 8 }}>{card.best_use_case}</div>
+                        </td>
+                        <td>{card.primary_evidence}</td>
+                        <td>{card.main_weakness}</td>
+                        <td className="col-note">{card.final_research_note}</td>
+                      </tr>
+                    ))}
+                  </Fragment>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
