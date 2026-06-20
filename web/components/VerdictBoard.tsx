@@ -9,7 +9,7 @@ const numWord = (n: number) => (["zero", "one", "two", "three", "four", "five"][
 
 const DESCRIPT: Record<Verdict, string> = {
   Survived: "Useful net-of-cost performance, controlled drawdowns, and credible out-of-sample evidence that does not depend on a single parameter choice.",
-  Conditional: "Adds value under specific regimes or cost levels, or as a risk-control overlay — useful, but not standalone alpha.",
+  Conditional: "Adds value under specific regimes or cost levels, or as a risk-control overlay. Useful, but not standalone alpha.",
   Rejected: "Costs, turnover, benchmark-relative weakness, or instability undo the signal. A documented negative result.",
 };
 

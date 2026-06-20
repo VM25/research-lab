@@ -79,7 +79,7 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
                   {mode === "net"
                     ? <>Net of {backtest.base_cost_bps} bps, the strategy compounded at <b>{pct(km.cagr)}</b> per year</>
                     : <>Gross of costs it compounded at <b>{pct(grossCagr)}</b> per year; costs reduce this by <b>{pct(km.transaction_cost_drag, 2)}</b></>}
-                  {cmp && <>, {cmp.excess_return >= 0 ? "ahead of" : "behind"} {backtest.benchmark_labels[bench]} by <b>{pctSigned(cmp.excess_return)}</b> per year — Sharpe <b>{num(cmp.strategy_sharpe)}</b> against <b>{num(cmp.benchmark_sharpe)}</b>.</>}
+                  {cmp && <>, {cmp.excess_return >= 0 ? "ahead of" : "behind"} {backtest.benchmark_labels[bench]} by <b>{pctSigned(cmp.excess_return)}</b> per year, at Sharpe <b>{num(cmp.strategy_sharpe)}</b> against <b>{num(cmp.benchmark_sharpe)}</b>.</>}
                 </span>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
               <table className="oos-table">
                 <tbody>
                   <tr>
-                    <td>In-sample · 2006–2016</td>
+                    <td>In-sample, 2006 to 2016</td>
                     <td className="num">{pct(c.stress_test_summary.train_test.train_cagr)}</td>
                     <td className="num">{num(c.stress_test_summary.train_test.train_sharpe)}</td>
                   </tr>

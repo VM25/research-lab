@@ -232,8 +232,8 @@ def _headline(counts):
         return "was" if n == 1 else "were"
     s, c, r = counts["Survived"], counts["Conditional"], counts["Rejected"]
     return (f"Of five signals, {s} survived, "
-            f"{c} {was(c)} conditional, and {r} {was(r)} rejected — "
-            "discipline, not a single best backtest, separates them.")
+            f"{c} {was(c)} conditional, and {r} {was(r)} rejected. "
+            "Discipline, not a single best backtest, separates them.")
 
 
 def _key_findings(classifications, sm, cash_cagr):

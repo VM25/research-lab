@@ -1,14 +1,13 @@
-export default function SectionHead({ index, kicker, title, lede }: {
-  index: string; kicker: string; title: string; lede?: string;
+/* Section header: a confident title carries the section. No per-section
+   eyebrow/number label (templated AI-tell). `kicker`/`index` kept in the
+   signature for caller compatibility but intentionally not rendered. */
+export default function SectionHead({ title, lede }: {
+  index?: string; kicker?: string; title: string; lede?: string;
 }) {
   return (
     <div className="s-head">
-      <div className="s-index">§{index}</div>
-      <div className="s-headmain">
-        <span className="s-kicker">{kicker}</span>
-        <h2 className="s-title">{title}</h2>
-        {lede && <p className="s-lede">{lede}</p>}
-      </div>
+      <h2 className="s-title">{title}</h2>
+      {lede && <p className="s-lede">{lede}</p>}
     </div>
   );
 }

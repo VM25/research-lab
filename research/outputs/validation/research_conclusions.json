@@ -5,7 +5,7 @@
     "Conditional": 1,
     "Rejected": 1
   },
-  "headline": "Of five signals, 3 survived, 1 was conditional, and 1 was rejected \u2014 discipline, not a single best backtest, separates them.",
+  "headline": "Of five signals, 3 survived, 1 was conditional, and 1 was rejected. Discipline, not a single best backtest, separates them.",
   "key_findings": [
     "Time-Series Momentum: Survived (net Sharpe 0.57, max DD -15.3%).",
     "Cross-Sectional Momentum: Survived (net Sharpe 0.62, max DD -18.4%).",

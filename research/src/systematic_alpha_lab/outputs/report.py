@@ -17,7 +17,7 @@ def generate_report(ds: Dataset, bt: dict, val: dict) -> str:
     meta = ds.universe_meta
     L = []
 
-    L.append("# Systematic Alpha Research Lab — Research Report\n")
+    L.append("# Systematic Alpha Research Lab: Research Report\n")
     L.append("> Does this signal survive reality? A disciplined test of five "
              "explainable signals against costs, out-of-sample data, and stress.\n")
 

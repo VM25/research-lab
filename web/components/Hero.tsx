@@ -42,8 +42,8 @@ export default function Hero({ overview, board }: {
           <div>
             <div className="mast-meta">
               <Row k="Universe" v={`${u.asset_count} liquid ETFs · ${u.asset_groups} asset groups`} />
-              <Row k="Price sample" v={`${u.sample_start} – ${u.sample_end} · ${years} yrs`} mono />
-              <Row k="Backtest" v={`${overview.backtest_start ?? u.sample_start} – ${u.sample_end}`} mono />
+              <Row k="Price sample" v={`${u.sample_start} to ${u.sample_end}`} mono />
+              <Row k="Backtest window" v={`${overview.backtest_start ?? u.sample_start} to ${u.sample_end}`} mono />
               <Row k="Return basis" v="Dividend- & split-adjusted close" />
               <Row k="Cost basis" v={`${overview.primary_cost_bps} bps per unit turnover (primary)`} mono />
               <Row k="Signals tested" v={`${overview.signal_count}`} mono />

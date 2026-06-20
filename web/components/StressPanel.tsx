@@ -47,7 +47,7 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
       <div className="frame">
         <SectionHead index="04" kicker="Validation review"
           title="Response to moving assumptions"
-          lede="Each module re-runs the signal under a different perturbation — cost, parameter, rebalance frequency, market regime, and crisis window — to test whether the result holds when the assumptions move." />
+          lede="Each module re-runs the signal under a different perturbation (cost, parameter, rebalance frequency, market regime, and crisis window) to test whether the result holds when the assumptions move." />
 
         <div className="s-body">
           {/* COST */}
@@ -83,9 +83,9 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
                   <Row k="Cost drag / yr" v={pct(sel.cost_drag, 2)} />
                 </div>
                 <div className="cost-verdict">
-                  <span className="label">Cost test · this scenario only</span>
-                  <div className="cv-line">{sel.classification_at_cost_level} — {changed ? "weaker than baseline" : "unchanged vs baseline"}</div>
-                  <div className="cv-final">Final classification: <b>{c.verdict}</b> — determined by the full evidence (turnover and benchmark-relative result), not cost level alone.</div>
+                  <span className="label">Cost test, this scenario only</span>
+                  <div className="cv-line">{sel.classification_at_cost_level}, {changed ? "weaker than baseline" : "unchanged vs baseline"}</div>
+                  <div className="cv-final">Final classification: <b>{c.verdict}</b>, determined by the full evidence (turnover and benchmark-relative result), not cost level alone.</div>
                 </div>
               </div>
             </div>
@@ -105,25 +105,25 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
               {paramBars.length
                 ? <BarChart bars={paramBars} height={190} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across parameter sets" />
                 : <p className="empty-note">The ensemble has no single tunable parameter; robustness comes from blending four signals.</p>}
-              <div className="mod-result">RESULT — {paramBars.length ? `${stableParams} of ${paramBars.length} parameter settings remain economically useful; ${stableParams >= Math.ceil(paramBars.length * 0.6) ? "the result is not a one-setting artefact." : "the result is parameter-sensitive."}` : "robustness derives from diversification across signals."}</div>
+              <div className="mod-result"><span className="mr-tag">Result</span> {paramBars.length ? `${stableParams} of ${paramBars.length} parameter settings remain economically useful; ${stableParams >= Math.ceil(paramBars.length * 0.6) ? "the result is not a one-setting artefact." : "the result is parameter-sensitive."}` : "robustness derives from diversification across signals."}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Rebalance frequency</span><span className="mod-q">timing-dependent?</span></div>
               <BarChart bars={rebalBars} height={190} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across rebalance frequencies" />
-              <div className="mod-result">RESULT — {rebalDelta(st)}</div>
+              <div className="mod-result"><span className="mr-tag">Result</span> {rebalDelta(st)}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Market regimes</span><span className="mod-q">where it helps / hurts</span></div>
               <BarChart bars={regimeBars} height={200} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe by market regime" />
-              <div className="mod-result">RESULT — strongest in {best?.regime_name} (Sharpe {num(best?.sharpe)}), weakest in {worst?.regime_name} (Sharpe {num(worst?.sharpe)}); {Math.abs((best?.sharpe ?? 0) - (worst?.sharpe ?? 0)) > 0.8 ? "behaviour is regime-dependent." : "behaviour is fairly steady across regimes."}</div>
+              <div className="mod-result"><span className="mr-tag">Result</span> strongest in {best?.regime_name} (Sharpe {num(best?.sharpe)}), weakest in {worst?.regime_name} (Sharpe {num(worst?.sharpe)}); {Math.abs((best?.sharpe ?? 0) - (worst?.sharpe ?? 0)) > 0.8 ? "behaviour is regime-dependent." : "behaviour is fairly steady across regimes."}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Crisis windows</span><span className="mod-q">behaviour under stress</span></div>
               <BarChart bars={crisisBars} height={200} yFormat={(v) => `${(v * 100).toFixed(0)}%`} ariaLabel="Cumulative return across crisis windows" />
-              <div className="mod-result">RESULT — worst window {worstCrisis?.crisis_period}: {pctSigned(worstCrisis?.cumulative_return)} cumulative ({pctSigned(worstCrisis?.benchmark_relative_return)} relative to SPY).</div>
+              <div className="mod-result"><span className="mr-tag">Result</span> worst window {worstCrisis?.crisis_period}: {pctSigned(worstCrisis?.cumulative_return)} cumulative ({pctSigned(worstCrisis?.benchmark_relative_return)} relative to SPY).</div>
             </div>
           </div>
 

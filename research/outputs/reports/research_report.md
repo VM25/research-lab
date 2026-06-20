@@ -1,4 +1,4 @@
-# Systematic Alpha Research Lab — Research Report
+# Systematic Alpha Research Lab: Research Report
 > Does this signal survive reality? A disciplined test of five explainable signals against costs, out-of-sample data, and stress.
 ## 1. Research Question
 Do simple systematic alpha signals survive costs, out-of-sample testing, robustness checks, and market stress?
@@ -67,7 +67,7 @@ A signal is credible only if it survives the full process: hypothesis → signal
 
 Each signal was also tested across cost levels, parameter grids, rebalance frequencies, six market regimes, and five crisis windows.
 ## 6. Final Classification
-Of five signals, 3 survived, 1 was conditional, and 1 was rejected — discipline, not a single best backtest, separates them.
+Of five signals, 3 survived, 1 was conditional, and 1 was rejected. Discipline, not a single best backtest, separates them.
 
 | Signal | Verdict | Note |
 | --- | --- | --- |

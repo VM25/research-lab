@@ -12,7 +12,7 @@ export default function Methodology({ data }: { data: DataSummary; overview: Ove
       <div className="frame">
         <SectionHead index="06" kicker="Methodology · Audit trail"
           title="Data, construction, and validation record"
-          lede={`${data.source_summary} Every figure on this page is produced by the Python research engine and read from generated JSON — none is entered by hand.`} />
+          lede={`${data.source_summary} Every figure on this page is produced by the Python research engine and read from generated JSON; none is entered by hand.`} />
 
         <div className="s-body">
           <div className="method-grid">
@@ -59,7 +59,7 @@ export default function Methodology({ data }: { data: DataSummary; overview: Ove
             <div className="method-detail">
               <div className="method-detail-grid">
                 <div>
-                  <span className="label" style={{ display: "block", marginBottom: 12 }}>Universe — {data.universe.length} ETFs, all included</span>
+                  <span className="label" style={{ display: "block", marginBottom: 12 }}>Universe: {data.universe.length} ETFs, all included</span>
                   <table className="uni-table">
                     <thead><tr><th>Ticker</th><th>Asset</th><th>Group</th><th>First</th><th>Last</th><th>Source</th></tr></thead>
                     <tbody>

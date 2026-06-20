@@ -47,7 +47,7 @@ export default function SignalSelector({ cases, selected, onSelect }: {
                     </span>
                   </td>
                   <td className="col-weak"><span className="docket-weak">{c.weaknesses[0] ?? c.expected_weakness[0]}</span></td>
-                  <td><span className="docket-open">{i === selected ? "● Open" : "Open →"}</span></td>
+                  <td><span className="docket-open">{i === selected ? "Viewing" : "Open"}</span></td>
                 </tr>
               ))}
             </tbody>
