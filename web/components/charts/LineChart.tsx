@@ -83,8 +83,8 @@ export default function LineChart({
          aria-label={ariaLabel ?? "Line chart"} style={{ overflow: "visible" }}>
       <defs>
         <linearGradient id="lc-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--signal-2)" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="var(--signal-2)" stopOpacity="0" />
         </linearGradient>
       </defs>
       {/* gridlines + y axis */}

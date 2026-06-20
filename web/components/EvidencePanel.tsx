@@ -24,11 +24,11 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
   const equity: Series[] = useMemo(() => [
     { name: backtest.benchmark_labels[bench], values: curves.benchmarks[bench], color: "var(--ink-3)", dash: "6 4", width: 1.5, label: true },
     { name: "Strategy, gross", values: fam.gross, color: "var(--ink-2)", dash: "2 3", width: mode === "gross" ? 2.3 : 1.2 },
-    { name: "Strategy, net", values: fam.net, color: "var(--accent)", width: mode === "net" ? 2.4 : 1.2, label: true, area: mode === "net" },
+    { name: "Strategy, net", values: fam.net, color: "var(--signal-2)", width: mode === "net" ? 2.6 : 1.3, label: true, area: mode === "net" },
   ], [mode, bench, fam, curves, backtest.benchmark_labels]);
 
   const ddSeries: Series[] = [
-    { name: "Drawdown", values: fam.drawdown, color: "var(--ink)", width: 1.6, label: true },
+    { name: "Drawdown", values: fam.drawdown, color: "var(--ink-2)", width: 1.7, label: true, area: true },
   ];
 
   return (
@@ -66,11 +66,11 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
 
             <div className="ev-chart">
               <div className="legend" style={{ marginBottom: 14 }}>
-                <span><i style={{ borderColor: "var(--ink)" }} />Strategy, net ({backtest.base_cost_bps} bps)</span>
+                <span><i style={{ borderColor: "var(--signal-2)", borderTopWidth: 3 }} />Strategy, net ({backtest.base_cost_bps} bps)</span>
                 <span><i style={{ borderColor: "var(--ink-2)", borderTopStyle: "dotted" }} />Strategy, gross</span>
                 <span><i style={{ borderColor: "var(--ink-3)", borderTopStyle: "dashed" }} />{backtest.benchmark_labels[bench]}</span>
               </div>
-              <LineChart dates={curves.dates} series={equity} height={340}
+              <LineChart dates={curves.dates} series={equity} height={320}
                          yFormat={(v) => v.toFixed(0)}
                          ariaLabel={`Index of 100: ${c.signal_name} net and gross versus ${backtest.benchmark_labels[bench]}`} />
               <div className="finding">
@@ -86,7 +86,7 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
           </div>
 
           <div className="stat-grid" style={{ gridTemplateColumns: "repeat(6, 1fr)", marginTop: 24 }}>
-            <Stat k={mode === "net" ? "CAGR, net" : "CAGR, gross"} v={pct(mode === "net" ? km.cagr : grossCagr)} />
+            <Stat k={mode === "net" ? "CAGR, net" : "CAGR, gross"} v={pct(mode === "net" ? km.cagr : grossCagr)} accent />
             <Stat k="Sharpe" v={num(mode === "net" ? km.sharpe : grossSharpe)} />
             <Stat k="Max drawdown" v={pct(km.max_drawdown, 0)} />
             <Stat k="Volatility" v={pct(km.annualized_volatility)} />
@@ -98,7 +98,7 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
             <div>
               <div className="sheet-title" style={{ fontSize: 16 }}>Drawdown profile</div>
               <div className="sheet-q" style={{ marginBottom: 12 }}>How deep were the peak-to-trough losses?</div>
-              <LineChart dates={curves.dates} series={ddSeries} height={200} baselineZero
+              <LineChart dates={curves.dates} series={ddSeries} height={180} baselineZero
                          yFormat={(v) => `${(v * 100).toFixed(0)}%`} ariaLabel="Drawdown over time" />
               <div className="finding">
                 <span className="finding-tag">Finding</span>
@@ -135,11 +135,11 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
   );
 }
 
-function Stat({ k, v, last }: { k: string; v: string; last?: boolean }) {
+function Stat({ k, v, last, accent }: { k: string; v: string; last?: boolean; accent?: boolean }) {
   return (
     <div className="stat" style={last ? { borderRight: 0 } : undefined}>
       <div className="stat-key">{k}</div>
-      <div className="stat-val">{v}</div>
+      <div className={`stat-val ${accent ? "accent" : ""}`}>{v}</div>
     </div>
   );
 }

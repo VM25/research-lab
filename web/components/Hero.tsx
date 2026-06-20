@@ -20,13 +20,13 @@ export default function Hero({ overview, board }: {
       <div className="frame">
         <div className="mast-bar">
           <span className="mast-id"><b>Systematic Alpha Research Lab</b> &nbsp;·&nbsp; Signal Validation Report</span>
-          <span className="mast-status">Report SAL-01 &nbsp;·&nbsp; As of <b>{u.sample_end}</b></span>
+          <span className="mast-status">As of <b>{u.sample_end}</b></span>
         </div>
 
         <div className="mast-grid">
           <div>
             <span className="mast-eyebrow">Research mandate</span>
-            <h1 className="mast-question">Does this signal survive reality?</h1>
+            <h1 className="mast-question">Does this signal<br /><span className="mast-q-accent">survive reality?</span></h1>
             <p className="mast-mandate">{overview.headline} Each of {overview.signal_count} signals is treated as a research case and carried through one validation sequence.</p>
 
             <div className="mast-pipeline">

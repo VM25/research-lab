@@ -21,7 +21,7 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
 
   const costSeries: Series[] = [
     { name: "Gross", values: fam.gross, color: "var(--ink-3)", dash: "2 3", width: 1.4 },
-    { name: `Net @ ${sel.cost_bps} bps`, values: fam.net_by_cost[costKey], color: "var(--accent)", width: 2.3, label: true, area: true },
+    { name: `Net @ ${sel.cost_bps} bps`, values: fam.net_by_cost[costKey], color: "var(--signal-2)", width: 2.4, label: true, area: true },
   ];
 
   const costBars: Bar[] = costRows.map((r) => ({
@@ -70,10 +70,10 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
             <div className="stress-cost-grid">
               <div>
                 <div className="legend" style={{ marginBottom: 12 }}>
-                  <span><i style={{ borderColor: "var(--ink)" }} />Net @ {sel.cost_bps} bps</span>
+                  <span><i style={{ borderColor: "var(--signal-2)", borderTopWidth: 3 }} />Net @ {sel.cost_bps} bps</span>
                   <span><i style={{ borderColor: "var(--ink-3)", borderTopStyle: "dotted" }} />Gross</span>
                 </div>
-                <LineChart dates={curves.dates} series={costSeries} height={240}
+                <LineChart dates={curves.dates} series={costSeries} height={210}
                            yFormat={(v) => v.toFixed(0)} ariaLabel="Net index at selected cost versus gross" />
               </div>
               <div className="cost-readout">
@@ -90,7 +90,7 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
               </div>
             </div>
             <div className="sheet-pad" style={{ paddingTop: 8 }}>
-              <BarChart bars={costBars} height={200} yFormat={(v) => v.toFixed(2)} ariaLabel="Net Sharpe across cost levels" />
+              <BarChart bars={costBars} height={176} yFormat={(v) => v.toFixed(2)} ariaLabel="Net Sharpe across cost levels" />
               <div className="finding">
                 <span className="finding-tag">Result</span>
                 <span className="finding-text">From 1 → 25 bps, net Sharpe moves <b>{num(costRows[0].net_sharpe)}</b> → <b>{num(costRows[costRows.length - 1].net_sharpe)}</b> and cost drag rises to <b>{pct(costRows[costRows.length - 1].cost_drag, 2)}</b>/yr. {sel.net_sharpe < 0.2 ? "At the stress level the edge is largely gone." : "It still clears costs at the stress level."}</span>
@@ -103,26 +103,26 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Parameter robustness</span><span className="mod-q">one setting or many?</span></div>
               {paramBars.length
-                ? <BarChart bars={paramBars} height={190} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across parameter sets" />
+                ? <BarChart bars={paramBars} height={168} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across parameter sets" />
                 : <p className="empty-note">The ensemble has no single tunable parameter; robustness comes from blending four signals.</p>}
               <div className="mod-result"><span className="mr-tag">Result</span> {paramBars.length ? `${stableParams} of ${paramBars.length} parameter settings remain economically useful; ${stableParams >= Math.ceil(paramBars.length * 0.6) ? "the result is not a one-setting artefact." : "the result is parameter-sensitive."}` : "robustness derives from diversification across signals."}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Rebalance frequency</span><span className="mod-q">timing-dependent?</span></div>
-              <BarChart bars={rebalBars} height={190} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across rebalance frequencies" />
+              <BarChart bars={rebalBars} height={168} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe across rebalance frequencies" />
               <div className="mod-result"><span className="mr-tag">Result</span> {rebalDelta(st)}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Market regimes</span><span className="mod-q">where it helps / hurts</span></div>
-              <BarChart bars={regimeBars} height={200} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe by market regime" />
+              <BarChart bars={regimeBars} height={180} yFormat={(v) => v.toFixed(2)} ariaLabel="Sharpe by market regime" />
               <div className="mod-result"><span className="mr-tag">Result</span> strongest in {best?.regime_name} (Sharpe {num(best?.sharpe)}), weakest in {worst?.regime_name} (Sharpe {num(worst?.sharpe)}); {Math.abs((best?.sharpe ?? 0) - (worst?.sharpe ?? 0)) > 0.8 ? "behaviour is regime-dependent." : "behaviour is fairly steady across regimes."}</div>
             </div>
 
             <div className="stress-mod">
               <div className="mod-h"><span className="mod-title">Crisis windows</span><span className="mod-q">behaviour under stress</span></div>
-              <BarChart bars={crisisBars} height={200} yFormat={(v) => `${(v * 100).toFixed(0)}%`} ariaLabel="Cumulative return across crisis windows" />
+              <BarChart bars={crisisBars} height={180} yFormat={(v) => `${(v * 100).toFixed(0)}%`} ariaLabel="Cumulative return across crisis windows" />
               <div className="mod-result"><span className="mr-tag">Result</span> worst window {worstCrisis?.crisis_period}: {pctSigned(worstCrisis?.cumulative_return)} cumulative ({pctSigned(worstCrisis?.benchmark_relative_return)} relative to SPY).</div>
             </div>
           </div>

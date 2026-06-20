@@ -7,14 +7,9 @@ export default function SiteFooter({ overview, sources }: { overview: Overview; 
   return (
     <footer className="colophon">
       <div className="frame">
-        <div className="colo-close">
-          <span className="colo-rule" aria-hidden="true" />
-          <span className="colo-end">End of validation record</span>
-          <span className="colo-rule" aria-hidden="true" />
-        </div>
         <div className="colo-grid">
           <div>
-            <span className="kicker">Systematic Alpha Research Lab · Report SAL-01</span>
+            <span className="kicker">Systematic Alpha Research Lab</span>
             <p className="colo-q">Does this signal survive reality?</p>
             <p className="colo-summary">
               {overview.signal_count} signals across {u.asset_count} ETFs, {u.sample_start.slice(0, 4)} to {u.sample_end.slice(0, 4)}, classified Survived / Conditional / Rejected

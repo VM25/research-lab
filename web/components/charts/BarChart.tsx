@@ -54,21 +54,21 @@ export default function BarChart({ bars, height = 220, yFormat = (v) => v.toFixe
         const top = Math.min(y(b.value), zeroY);
         const h = Math.max(1, Math.abs(y(b.value) - zeroY));
         const positive = b.value >= 0;
-        const op = b.highlight ? 1 : 0.5;
+        const fillCol = b.highlight ? "var(--signal-2)" : "var(--ink)";
+        const op = b.highlight ? 1 : 0.42;
         return (
           <g key={i}>
             {positive ? (
-              <rect x={cx - bw / 2} y={top} width={bw} height={h} fill="var(--ink)" opacity={op}
-                    stroke={b.highlight ? "var(--ink)" : "none"} />
+              <rect x={cx - bw / 2} y={top} width={bw} height={h} fill={fillCol} opacity={op} />
             ) : (
               <rect x={cx - bw / 2} y={top} width={bw} height={h} fill="none"
-                    stroke="var(--ink)" strokeWidth="1.4" opacity={Math.max(op, 0.6)} />
+                    stroke={fillCol} strokeWidth="1.4" opacity={Math.max(op, 0.7)} />
             )}
             {b.highlight && (
-              <rect x={cx - bw / 2} y={positive ? top - 3 : top + h + 1} width={bw} height="2" fill="var(--ink)" />
+              <rect x={cx - bw / 2} y={positive ? top - 3 : top + h + 1} width={bw} height="2" fill="var(--signal-2)" />
             )}
             <text x={cx} y={positive ? top - 7 : top + h + 14} textAnchor="middle"
-                  className="ax" style={{ fontSize: 11, fill: b.highlight ? "var(--ink)" : "var(--ink-3)" }}>
+                  className="ax" style={{ fontSize: 11, fill: b.highlight ? "var(--signal-2)" : "var(--ink-3)" }}>
               {yFormat(b.value)}
             </text>
             <text x={cx} y={H - 22} textAnchor="middle" className="ax"
