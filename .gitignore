@@ -27,3 +27,4 @@ npm-debug.log*
 
 # Netlify local link state
 .netlify/
+web/*.tsbuildinfo
