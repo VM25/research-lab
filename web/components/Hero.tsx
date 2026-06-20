@@ -20,15 +20,23 @@ export default function Hero({ overview, board }: {
       <div className="frame">
         <div className="mast-bar">
           <span className="mast-id"><b>Systematic Alpha Research Lab</b> &nbsp;·&nbsp; Signal Validation Report</span>
-          <span className="mast-status">Research only · Not investment advice</span>
+          <span className="mast-status">Report SAL-01 &nbsp;·&nbsp; As of <b>{u.sample_end}</b></span>
         </div>
 
         <div className="mast-grid">
           <div>
-            <span className="kicker">Research question</span>
-            <h1 className="mast-question">Does this signal<br />survive reality?</h1>
-            <p className="mast-mandate">{overview.headline} Each signal is treated as a research case and carried through a fixed validation sequence — thesis, cost-aware evidence, out-of-sample and walk-forward testing, robustness, and a documented classification.</p>
-            <p className="mast-discl">RESEARCH ONLY · NOT INVESTMENT ADVICE · NOT A LIVE TRADING SYSTEM</p>
+            <span className="mast-eyebrow">Research mandate</span>
+            <h1 className="mast-question">Does this signal survive reality?</h1>
+            <p className="mast-mandate">{overview.headline} Each of {overview.signal_count} signals is treated as a research case and carried through one validation sequence.</p>
+
+            <div className="mast-pipeline">
+              <span className="mp-label">Validation sequence</span>
+              <ol className="mp-steps">
+                {["Thesis", "Cost-aware evidence", "Out-of-sample", "Walk-forward", "Robustness", "Classification"].map((s, i) => (
+                  <li key={s}><span className="mp-n">{String(i + 1).padStart(2, "0")}</span>{s}</li>
+                ))}
+              </ol>
+            </div>
           </div>
 
           <div>

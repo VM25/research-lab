@@ -6,7 +6,8 @@ export interface Series {
   color?: string;       // CSS var; defaults to --ink
   dash?: string;        // stroke-dasharray, e.g. "4 3"
   width?: number;
-  label?: boolean;      // draw an end-of-line label
+  label?: boolean;      // draw an end-of-line marker
+  area?: boolean;       // subtle monochrome fill under the line (figure-ground)
 }
 
 interface Props {
@@ -64,9 +65,28 @@ export default function LineChart({
     return -1;
   };
 
+  const areaFor = (vals: (number | null)[]) => {
+    const base = PAD.t + innerH;
+    let d = ""; let started = false; let firstI = -1; let prevI = -1;
+    vals.forEach((v, i) => {
+      if (v === null) return;
+      if (!started) { d += `M${x(i).toFixed(1)} ${base.toFixed(1)} L${x(i).toFixed(1)} ${y(v).toFixed(1)} `; firstI = i; started = true; }
+      else d += `L${x(i).toFixed(1)} ${y(v).toFixed(1)} `;
+      prevI = i;
+    });
+    if (started) d += `L${x(prevI).toFixed(1)} ${base.toFixed(1)} Z`;
+    return d;
+  };
+
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="chart-svg" role="img"
          aria-label={ariaLabel ?? "Line chart"} style={{ overflow: "visible" }}>
+      <defs>
+        <linearGradient id="lc-area" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.10" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
       {/* gridlines + y axis */}
       {tickVals.map((tv, k) => (
         <g key={k}>
@@ -89,6 +109,11 @@ export default function LineChart({
           <text x={x(yr.i)} y={H - 8} textAnchor="middle" className="ax">{yr.label}</text>
         </g>
       ))}
+
+      {/* subtle area under flagged primary series */}
+      {series.map((s, k) => s.area ? (
+        <path key={`a${k}`} d={areaFor(s.values)} fill="url(#lc-area)" stroke="none" />
+      ) : null)}
 
       {/* lines (secondary first so primary sits on top) */}
       {series.map((s, k) => (

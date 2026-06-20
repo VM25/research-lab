@@ -21,7 +21,7 @@ export default function StressPanel({ c, backtest }: { c: SignalCase; backtest: 
 
   const costSeries: Series[] = [
     { name: "Gross", values: fam.gross, color: "var(--ink-3)", dash: "2 3", width: 1.4 },
-    { name: `Net @ ${sel.cost_bps} bps`, values: fam.net_by_cost[costKey], color: "var(--ink)", width: 2.2, label: true },
+    { name: `Net @ ${sel.cost_bps} bps`, values: fam.net_by_cost[costKey], color: "var(--accent)", width: 2.3, label: true, area: true },
   ];
 
   const costBars: Bar[] = costRows.map((r) => ({

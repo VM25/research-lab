@@ -24,7 +24,7 @@ export default function EvidencePanel({ c, backtest }: { c: SignalCase; backtest
   const equity: Series[] = useMemo(() => [
     { name: backtest.benchmark_labels[bench], values: curves.benchmarks[bench], color: "var(--ink-3)", dash: "6 4", width: 1.5, label: true },
     { name: "Strategy, gross", values: fam.gross, color: "var(--ink-2)", dash: "2 3", width: mode === "gross" ? 2.3 : 1.2 },
-    { name: "Strategy, net", values: fam.net, color: "var(--ink)", width: mode === "net" ? 2.3 : 1.2, label: true },
+    { name: "Strategy, net", values: fam.net, color: "var(--accent)", width: mode === "net" ? 2.4 : 1.2, label: true, area: mode === "net" },
   ], [mode, bench, fam, curves, backtest.benchmark_labels]);
 
   const ddSeries: Series[] = [

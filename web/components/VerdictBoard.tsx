@@ -5,6 +5,8 @@ import { ClassificationBoard, Verdict } from "@/lib/data";
 import Classification from "./Classification";
 import SectionHead from "./SectionHead";
 
+const numWord = (n: number) => (["zero", "one", "two", "three", "four", "five"][n] ?? String(n));
+
 const DESCRIPT: Record<Verdict, string> = {
   Survived: "Useful net-of-cost performance, controlled drawdowns, and credible out-of-sample evidence that does not depend on a single parameter choice.",
   Conditional: "Adds value under specific regimes or cost levels, or as a risk-control overlay — useful, but not standalone alpha.",
@@ -22,6 +24,9 @@ export default function VerdictBoard({ board, onSelect, currentFamily }: {
           lede="The committee classification for each signal, grouped by verdict and backed by the same evidence inspected above. Select any row to reopen its file." />
 
         <div className="s-body">
+          <p className="board-conclusion">
+            Of five signals examined, <b>{numWord(board.counts.Survived)}</b> survived validation as documented research overlays, <b>{numWord(board.counts.Conditional)}</b> {board.counts.Conditional === 1 ? "is" : "are"} conditional, and <b>{numWord(board.counts.Rejected)}</b> {board.counts.Rejected === 1 ? "is" : "are"} rejected on this evidence.
+          </p>
           <table className="board-table">
             <thead>
               <tr>
