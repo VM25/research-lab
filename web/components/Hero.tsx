@@ -24,33 +24,24 @@ export default function Hero({ overview, board }: {
         </div>
 
         <div className="mast-grid">
-          <div>
+          <div className="mast-lead">
             <span className="mast-eyebrow">Research mandate</span>
-            <h1 className="mast-question">Does this signal<br /><span className="mast-q-accent">survive reality?</span></h1>
+            <h1 className="mast-question">Does this signal<br /><em className="mast-q-em">survive reality?</em></h1>
             <p className="mast-mandate">{overview.headline} Each of {overview.signal_count} signals is treated as a research case and carried through one validation sequence.</p>
-
-            <div className="mast-pipeline">
-              <span className="mp-label">Validation sequence</span>
-              <ol className="mp-steps">
-                {["Thesis", "Cost-aware evidence", "Out-of-sample", "Walk-forward", "Robustness", "Classification"].map((s, i) => (
-                  <li key={s}><span className="mp-n">{String(i + 1).padStart(2, "0")}</span>{s}</li>
-                ))}
-              </ol>
-            </div>
           </div>
 
-          <div>
+          <aside className="mast-side">
             <div className="mast-meta">
-              <Row k="Universe" v={`${u.asset_count} liquid ETFs · ${u.asset_groups} asset groups`} />
+              <Row k="Universe" v={`${u.asset_count} liquid ETFs, ${u.asset_groups} groups`} />
               <Row k="Price sample" v={`${u.sample_start} to ${u.sample_end}`} mono />
               <Row k="Backtest window" v={`${overview.backtest_start ?? u.sample_start} to ${u.sample_end}`} mono />
               <Row k="Return basis" v="Dividend- & split-adjusted close" />
-              <Row k="Cost basis" v={`${overview.primary_cost_bps} bps per unit turnover (primary)`} mono />
+              <Row k="Cost basis" v={`${overview.primary_cost_bps} bps / unit turnover`} mono />
               <Row k="Signals tested" v={`${overview.signal_count}`} mono />
             </div>
 
             <div className="docket-mini">
-              <table className="ledger" style={{ marginTop: 18 }}>
+              <table className="ledger">
                 <thead>
                   <tr><th>Classification</th><th style={{ textAlign: "right" }}>Count</th></tr>
                 </thead>
@@ -69,7 +60,16 @@ export default function Hero({ overview, board }: {
                 </tbody>
               </table>
             </div>
-          </div>
+          </aside>
+        </div>
+
+        <div className="mast-pipeline">
+          <span className="mp-label">Validation sequence</span>
+          <ol className="mp-steps">
+            {["Thesis", "Cost-aware evidence", "Out-of-sample", "Walk-forward", "Robustness", "Classification"].map((s, i) => (
+              <li key={s}><span className="mp-n">{String(i + 1).padStart(2, "0")}</span>{s}</li>
+            ))}
+          </ol>
         </div>
       </div>
     </header>

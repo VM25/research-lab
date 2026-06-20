@@ -45,7 +45,7 @@
 
   /* Chivo = institutional grotesque (identity/headings/figures);
      Fira Sans = humanist body; Fira Mono = data/labels/notation. */
-  --font-hook: "Zilla Slab", Georgia, serif;       /* hero hook only */
+  --font-hook: "Playfair Display", Georgia, serif;   /* hero hook only */
   --font-display: "Chivo", system-ui, sans-serif;
   --font-serif: "Chivo", system-ui, sans-serif;   /* alias kept for existing refs */
   --font-sans: "Fira Sans", system-ui, sans-serif;
@@ -247,38 +247,46 @@ button { cursor: pointer; }
    SECTION COMPOSITIONS
    ============================================================ */
 
-/* ---- masthead (research mandate) ---- */
-.masthead { padding-top: 18px; }
+/* ---- masthead (research mandate) — editorial cover ---- */
+.masthead { padding-top: 22px; }
 .mast-bar {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 11px 0; border-bottom: 1px solid var(--rule-2); flex-wrap: wrap;
+  padding: 12px 0; border-bottom: 1px solid var(--rule-2); flex-wrap: wrap;
 }
-.mast-id { font-family: var(--font-sans); font-size: 13px; font-weight: 400; color: var(--ink-2); }
-.mast-id b { color: var(--ink); font-weight: 600; }
+.mast-id { font-family: var(--font-sans); font-size: 12.5px; font-weight: 400; color: var(--ink-3); }
+.mast-id b { color: var(--ink-2); font-weight: 600; }
 .mast-status { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .mast-status b { color: var(--ink-2); font-weight: 700; }
-.mast-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 52px; padding: 40px 0 34px; align-items: start; }
-.mast-eyebrow { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); display: block; }
-.mast-question {
-  font-family: var(--font-hook); font-weight: 700; color: var(--accent);
-  font-size: clamp(46px, 6.4vw, 86px); line-height: 0.98; letter-spacing: -0.025em; margin: 14px 0 0;
+
+.mast-grid { display: grid; grid-template-columns: 1.55fr 0.9fr; gap: 72px; padding: 62px 0 0; align-items: start; }
+.mast-lead { min-width: 0; }
+.mast-eyebrow {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink-3); display: inline-flex; align-items: center; gap: 11px;
 }
-.mast-q-accent { color: var(--signal-2); }
-.mast-mandate { margin-top: 20px; max-width: 58ch; font-size: 15px; color: var(--ink-2); }
-.mast-pipeline { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--rule-2); }
-.mp-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
-.mp-steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 20px; }
-.mp-steps li { display: flex; align-items: baseline; gap: 9px; font-size: 13px; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 9px; }
-.mp-n { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.02em; }
+.mast-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--ink-4); }
+.mast-question {
+  font-family: var(--font-hook); font-weight: 600; color: var(--accent);
+  font-size: clamp(44px, 6vw, 82px); line-height: 1.04; letter-spacing: -0.01em;
+  margin: 22px 0 0; padding-bottom: 0.08em;
+}
+.mast-q-em { font-style: italic; font-weight: 500; }
+.mast-mandate { margin-top: 26px; max-width: 48ch; font-size: 15px; line-height: 1.62; color: var(--ink-2); }
 
+.mast-side { padding-top: 5px; }
 .mast-meta { border-top: 1px solid var(--rule-2); }
-.mast-metarow { display: grid; grid-template-columns: 124px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
-.mast-metakey { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
-.mast-metaval { font-size: 13.5px; color: var(--ink); }
-.mast-metaval .mono { font-size: 12.5px; }
+.mast-metarow { display: grid; grid-template-columns: 112px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--rule); }
+.mast-metakey { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-4); padding-top: 3px; }
+.mast-metaval { font-size: 13px; color: var(--ink); line-height: 1.4; }
+.mast-metaval .mono { font-size: 12px; color: var(--ink-2); }
+.docket-mini { margin-top: 20px; }
 
-/* docket index inside masthead */
-.docket-mini { margin-top: 14px; }
+/* full-width validation-sequence strip below the cover */
+.mast-pipeline { margin-top: 56px; padding: 16px 0 4px; border-top: 1px solid var(--rule-2); }
+.mp-label { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-4); }
+.mp-steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0 24px; }
+.mp-steps li { display: flex; align-items: baseline; gap: 10px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 11px; }
+.mp-n { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.02em; }
 
 /* ---- docket (signal selector) ---- */
 .docket-table { width: 100%; border-collapse: collapse; }
@@ -457,7 +465,11 @@ button { cursor: pointer; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1040px) {
-  .mast-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mast-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 44px; }
+  .mast-lead { max-width: none; }
+  .mast-side { padding-top: 0; }
+  .mast-pipeline { margin-top: 38px; }
+  .mp-steps { grid-template-columns: repeat(3, 1fr); }
   .case-grid { grid-template-columns: 1fr; }
   .case-main { padding: 30px 0; }
   .case-aside { border-left: 0; border-top: 1px solid var(--rule); padding: 30px 0; }
